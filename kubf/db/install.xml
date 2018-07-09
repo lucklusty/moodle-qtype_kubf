@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="question/type/ku_bf/db" VERSION="20120122" COMMENT="XMLDB file for Moodle question/type/ku_bf"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd"
+>
+	<TABLES>
+		<TABLE NAME="qtype_kubf_options" COMMENT="Options for ku_bf questions">
+			<FIELDS>
+				<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+				<FIELD NAME="question_id" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Foreign key references question.id."/>
+				<FIELD NAME="answer_id" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Foreign key references question_answers.id."/>
+				<FIELD NAME="term" TYPE="char" LENGTH="50" NOTNULL="true"  SEQUENCE="false" COMMENT="The factor of a function"/>
+				<FIELD NAME="score" TYPE="number" LENGTH="12" NOTNULL="true" DEFAULT="0.0000000" SEQUENCE="false" DECIMALS="7"  COMMENT="The score of a each factor"/>
+				<FIELD NAME="usecase" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Case sensitivity"/>
+				<FIELD NAME="functionname" TYPE="char" LENGTH="20" NOTNULL="true"  SEQUENCE="false" COMMENT="The name of the function"/>
+				<FIELD NAME="functiontype" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="The type of function 0 dnf 1 cnf"/>
+			</FIELDS>
+		<KEYS>
+			<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+			<KEY NAME="question_id" TYPE="foreign" FIELDS="question_id" REFTABLE="question" REFFIELDS="id"/>
+			<KEY NAME="answer_id" TYPE="foreign" FIELDS="answer_id" REFTABLE="question_answers" REFFIELDS="id"/>
+		</KEYS>
+		</TABLE>
+	</TABLES>
+</XMLDB>
